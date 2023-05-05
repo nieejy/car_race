@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class car : MonoBehaviour
 {
-
+    public float acceleration = 1.5f;
+    public float steering = 1;
     Rigidbody ridgid;
 
 
@@ -18,6 +19,13 @@ public class car : MonoBehaviour
     void Update()
     {
         float verticalInput = Input.GetAxis("Vertical");
-        ridgid.AddForce(transform.forward * verticalInput * 10);
+        float hoizontalInput = Input.GetAxis("Horizontal");
+
+        ridgid.AddForce(transform.forward * verticalInput * acceleration * Time.deltaTime);
+        transform.Rotate(Vector3.up, hoizontalInput * steering * Time.deltaTime);
+
+        Vector3 velocity = ridgid.velocity;
+        velocity = transform.forward * velocity.magnitude;
+        ridgid.velocity = velocity;
     }
 }
