@@ -1920,8 +1920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bb72f2d446afe49bdbe775312f9f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1000
-  steering: 100
+  acceleration: 750
+  steering: 150
 --- !u!33 &919861471625043299
 MeshFilter:
   m_ObjectHideFlags: 0
