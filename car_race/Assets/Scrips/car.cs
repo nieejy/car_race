@@ -6,6 +6,8 @@ public class car : MonoBehaviour
 {
     public float acceleration = 1.5f;
     public float steering = 1;
+    public bool drifting = false;
+    private bool isPaused = false;
     Rigidbody ridgid;
 
 
@@ -18,14 +20,44 @@ public class car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float hoizontalInput = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused) { ResumeGame(); }
+            else { PauseGame(); }
+        }
 
-        ridgid.AddForce(transform.forward * verticalInput * acceleration * Time.deltaTime);
-        transform.Rotate(Vector3.up, hoizontalInput * steering * Time.deltaTime);
+        if(!isPaused)
+        {
+            float verticalInput = Input.GetAxis("Vertical");
+            float hoizontalInput = Input.GetAxis("Horizontal");
 
-        Vector3 velocity = ridgid.velocity;
-        velocity = transform.forward * velocity.magnitude;
-        ridgid.velocity = velocity;
+            ridgid.AddForce(transform.forward * verticalInput * acceleration * Time.deltaTime);
+            transform.Rotate(Vector3.up, hoizontalInput * steering * Time.deltaTime);
+
+            if (drifting == false)
+            {
+                Vector3 velocity = ridgid.velocity;
+                velocity = transform.forward * velocity.magnitude;
+                ridgid.velocity = velocity;
+            }
+        }
+
+        
+
+
+    }
+
+    void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        Debug.Log("Pausiert");
+    }
+
+    void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        Debug.Log("Fortgesetzt");
     }
 }
