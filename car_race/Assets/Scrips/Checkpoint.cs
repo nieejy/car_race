@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private void ontrigger  (Collider other)
+
+    public bool IsChecked = false;
+    private CheckpointManager CheckpointManager;
+
+
+    private void Start()
     {
-        
+        CheckpointManager = GameObject.FindObjectOfType<CheckpointManager>();
+    }
+
+
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IsChecked = true;
+    }
+
+    public void Reset()
+    {
+        IsChecked = false;
     }
 }
