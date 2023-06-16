@@ -15,17 +15,29 @@ public class CheckpointManager : MonoBehaviour
         checkpoints = GameObject.FindObjectsOfType<Checkpoint>();
     }
 
-
-    public bool CheckCheckpoints()
+    public void OnCheckPointTriggered()
     {
-        foreach (Checkpoint checkpoint in checkpoints)
+
+    }
+
+    private bool CheckIfAllCheckpointsHit()
+    {
+        foreach(Checkpoint checkpoint in checkpoints)
         {
-            if (!checkpoint.IsChecked)
+            if(!checkpoint.IsChecked)
             {
                 return false;
             }
-        }    
+        }
         return true;
+    }
+
+    private void ResetCheckpoint()
+    {
+        foreach (Checkpoint checkpoint in checkpoints)
+        {
+            checkpoint.Reset();
+        }
     }
 
 
