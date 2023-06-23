@@ -2166,9 +2166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bb72f2d446afe49bdbe775312f9f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 750
+  acceleration: 850
   steering: 150
-  drifting: 1
+  drifting: 0
 --- !u!33 &919861471625043299
 MeshFilter:
   m_ObjectHideFlags: 0

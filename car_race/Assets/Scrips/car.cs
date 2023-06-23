@@ -58,6 +58,6 @@ public class car : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
-        Debug.Log("Fortgesetzt");
+        Debug.Log("Im Spiel!");
     }
 }
